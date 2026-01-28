@@ -1,17 +1,54 @@
-<!DOCTYPE html>
-<html>
+<html><head>
+   <title>Opening Vidi Technician App…</title>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script>
+     function getQueryParam(param) {
+       const urlParams = new URLSearchParams(window.location.search);
+       return urlParams.get(param);
+     }
 
-<head>
-    <title>My Shop</title>
-</head>
+     function isIOS() {
+       return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+     }
 
-<body>
-    <h1>Cloudflare 1 Active</h1>
-    <h1>Cloudflare 2 Active</h1>
-    <h1>Cloudflare 3 Active</h1>
-    <h1>Cloudflare 4 Active</h1>
-    <h1>Cloudflare 5 Active</h1>
-    <h1>Cloudflare 6 Active</h1>
-</body>
+     function isAndroid() {
+       return /Android/i.test(navigator.userAgent);
+     }
 
-</html>
+     window.onload = function () {
+       const path = getQueryParam('path') || '';
+
+       // App deep link
+       const deepLink = `https://product-links-site.pages.dev/?path=product/${path}`;
+       // Build Play Store URL with referrer parameter if referral code exists
+       const playStoreUrl = `https://play.google.com/store/apps/details?id=com.digitattva.vidi.technician`;
+       const appStoreLink = `https://apps.apple.com/in/app/vidi.technician/id1536628376`;
+
+       window.location.href = deepLink;
+
+       setTimeout(() => {
+         if (isAndroid()) {
+           window.location.href = playStoreUrl;
+         } else if (isIOS()) {
+           window.location.href = appStoreLink;
+         } else {
+           alert('Please open this link on your mobile device.');
+         }
+       }, 2000);
+     };
+   </script>
+   <style>
+     body {
+       font-family: sans-serif;
+       text-align: center;
+       padding-top: 100px;
+     }
+   </style>
+ </head>
+ <body>
+   <h2>Opening Vidi Technician app </h2>
+   <p>If not installed, you'll be redirected to the app store.</p>
+
+
+</body></html>
