@@ -1,4 +1,124 @@
-<html><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Open Vidi Technician</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <script>
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    function isIOS() {
+      return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    }
+
+    function isAndroid() {
+      return /Android/i.test(navigator.userAgent);
+    }
+
+    function openInApp() {
+      const path = getQueryParam("path") || "";
+      const deepLink = `https://product-links-site.pages.dev/product/${path}`;
+
+      // ✅ ONLY deep link works
+      window.location.href = deepLink;
+    }
+
+    function openInBrowser() {
+      const playStoreUrl =
+        "https://play.google.com/store/apps/details?id=com.first";
+      const appStoreLink =
+        "https://apps.apple.com/in/app/vidi.technician/id1536628376";
+
+      // ✅ ONLY store links work
+      if (isAndroid()) {
+        window.location.href = playStoreUrl;
+      } else if (isIOS()) {
+        window.location.href = appStoreLink;
+      } else {
+        alert("Please open this link on a mobile device.");
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #ffffff;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .box {
+      background: #1e293b;
+      padding: 24px;
+      border-radius: 12px;
+      text-align: center;
+      width: 90%;
+      max-width: 360px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+
+    h2 {
+      margin-bottom: 12px;
+    }
+
+    p {
+      font-size: 14px;
+      color: #cbd5f5;
+      margin-bottom: 20px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .app-btn {
+      background: #22c55e;
+      color: #000;
+    }
+
+    .browser-btn {
+      background: #38bdf8;
+      color: #000;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <h2>Open Vidi Technician</h2>
+    <p>Choose how you want to open this link</p>
+
+    <!-- ✅ App choice -->
+    <button class="app-btn" onclick="openInApp()">
+      Open in App
+    </button>
+
+    <!-- ✅ Browser choice -->
+    <button class="browser-btn" onclick="openInBrowser()">
+      Open in Browser
+    </button>
+  </div>
+</body>
+</html>
+
+
+<!-- <html><head>
    <title>Opening Vidi Technician App…</title>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,4 +171,4 @@
    <p>If not installed, you'll be redirected to the app store.</p>
 
 
-</body></html>
+</body></html> -->
