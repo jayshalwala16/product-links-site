@@ -1,6 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <title>Redirecting…</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <script>
+    function isIOS() {
+      return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    }
+
+    function isAndroid() {
+      return /Android/i.test(navigator.userAgent);
+    }
+
+    window.onload = function () {
+      const playStoreUrl =
+        "https://play.google.com/store/apps/details?id=com.first";
+      const appStoreUrl =
+        "https://apps.apple.com/in/app/vidi.technician/id1536628376";
+
+      // ⏳ Small delay so browser loads properly
+      setTimeout(() => {
+        if (isAndroid()) {
+          window.location.replace(playStoreUrl);
+        } else if (isIOS()) {
+          window.location.replace(appStoreUrl);
+        } else {
+          document.body.innerHTML =
+            "<h3>Please open this link on a mobile device</h3>";
+        }
+      }, 300);
+    };
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #ffffff;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>Redirecting to store…</h3>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
   <title>Open Vidi Technician</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -115,7 +170,7 @@
     </button>
   </div>
 </body>
-</html>
+</html> -->
 
 
 <!-- <html><head>
